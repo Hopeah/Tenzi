@@ -4,17 +4,18 @@ function Die(props) {
     const { isHeld, holdDice, value } = props;
 
     const styles = {
-        backgroundColor: isHeld ? "green" : "white"
+        backgroundColor: isHeld ? "#86EF84" : "white"
     };
 
     return(
-        <div 
+        <button
         className="die-face" 
         style={styles} 
         onClick={holdDice}
         >
-            <h2 className="die-num">{value}</h2>
-        </div>
+            {/* <h2 className="die-num">{value}</h2> */}
+            <h2 className='circle'></h2>
+        </button>
     );
 };
 
