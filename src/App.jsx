@@ -8,15 +8,6 @@ function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
 
-  const dieShapes = {
-    1: 'one',
-    2: 'two',
-    3: 'three',
-    4: 'four',
-    5: 'five',
-    6: 'six'
-  }
-
   React.useEffect(() => {
     const allHeld = dice.every(die => die.isHeld);
     const firstValue = dice[0].value;

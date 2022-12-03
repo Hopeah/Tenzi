@@ -55,15 +55,49 @@ main {
   cursor: pointer;
 }
 
-.die-num {
-  font-size: 2rem;
-}
-
 .circle {
+  margin: 0.1rem;
   width: 0.5rem;
   height: 0.5rem;
   background: red;
   border-radius: 50%
+}
+
+.face-2, .face-3, .face-4, .face-5, .face-6 {
+  display: flex;
+  justify-content : space-between;
+}
+
+.face-4 .column, .face-5 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.face-6 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.2rem;
+}
+
+.face-2 .circle:nth-of-type(1), .face-3 .circle:nth-of-type(1) {
+  align-self: flex-start;
+}
+.face-2 .circle:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.face-3 .circle:nth-of-type(2) {
+  align-self: center;
+}
+.face-3 .circle:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.face-5 .column:nth-of-type(2) {
+  justify-content: center;
 }
 
 .roll-dice {
