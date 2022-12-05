@@ -119,3 +119,34 @@ main {
 .roll-dice:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
+
+.stats {
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 500px;
+  height: 100px;
+  background-color: rgb(255, 251, 242);
+  display: flex;
+  justify-content: center;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem 3rem 0 3rem;
+}
+
+.no-result {
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 500px;
+  height: 100px;
+  background-color: rgb(243, 231, 208);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
