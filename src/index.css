@@ -59,8 +59,33 @@ main {
   margin: 0.1rem;
   width: 0.5rem;
   height: 0.5rem;
+  border-radius: 50%;
+}
+.circle.one {
+  background: #FF0000;
+}
+.circle.two {
+  background: #FF7F00;
+}
+.circle.three {
+  background: #FFFF00;
+}
+.circle.four {
+  background: #008000;
+}
+.circle.five {
+  background: #0000FF;
+}
+.circle.six {
+  background: #4B0082;
+}
+
+.circle.hard {
   background: red;
-  border-radius: 50%
+}
+
+.circle.unfair {
+  background: #86EF84;
 }
 
 .face-2, .face-3, .face-4, .face-5, .face-6 {
@@ -122,7 +147,7 @@ main {
 
 .stats {
   position: absolute;
-  top: 84%;
+  top: 88%;
   left: 50%;
   transform: translate(-50%, 50%);
   width: 500px;

@@ -1,6 +1,8 @@
 import React from "react";
 import Die from "./Die";
 import Statistics from "./Statistics";
+import Button from "./Button";
+import Difficulty from "./Difficulty";
 import { nanoid } from "nanoid";
 import { useState } from 'react';
 import reactLogo from './assets/react.svg'
@@ -13,6 +15,7 @@ function App() {
   const [isActiveTimer, setIsActiveTimer] = React.useState(false);
   const [bestResult, setBestResult] = React.useState(() => JSON.parse(localStorage.getItem("bestResult")) || []);
   const [currentResult, setCurrentResult] = React.useState(() => JSON.parse(localStorage.getItem("currentResult")) || []);
+  const [difficulty, setDifficulty] = React.useState("unfair");
 
   React.useEffect(() => {
     const allHeld = dice.every(die => die.isHeld);
@@ -104,16 +107,20 @@ function App() {
       value={die.value}
       isHeld={die.isHeld}
       holdDice={() => holdDice(die.id)}
+      difficulty={difficulty}
     />)
   })
 
   return(
     <main>
-      {tenzies}
+      {/* {tenzies} */}
       <h1 className="title">Care for a round of Tenzi?</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="dice-container">{diceElements}</div>
-      <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
+      <Button
+        tenzies={tenzies}
+        rollDice={rollDice}
+      />
       <Statistics 
         currentTime={currentResult.time}
         currentRolls={currentResult.rolls}
