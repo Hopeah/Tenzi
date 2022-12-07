@@ -8,7 +8,7 @@ function Button(props) {
     }
 
     return(
-        <button className="roll-dice" style={styles} onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
+        <button className="button" style={styles} onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
     )
 }
 

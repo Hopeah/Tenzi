@@ -15,7 +15,7 @@ function App() {
   const [isActiveTimer, setIsActiveTimer] = React.useState(false);
   const [bestResult, setBestResult] = React.useState(() => JSON.parse(localStorage.getItem("bestResult")) || []);
   const [currentResult, setCurrentResult] = React.useState(() => JSON.parse(localStorage.getItem("currentResult")) || []);
-  const [difficulty, setDifficulty] = React.useState("unfair");
+  const [difficulty, setDifficulty] = React.useState("");
 
   React.useEffect(() => {
     const allHeld = dice.every(die => die.isHeld);
@@ -23,7 +23,8 @@ function App() {
     const allSameValue = dice.every(die => die.value === firstValue);
     const result = {
       rolls: rolls,
-      time: time
+      time: time,
+      difficulty: difficulty
     }
     if (allHeld && allSameValue) {
       setTenzies(true);
@@ -87,8 +88,7 @@ function App() {
         return die.isHeld ? die : generateNewDie()
       }));
     } else {
-      setTenzies(false);
-      setDice(allNewDice());
+      newGame();
     };
   };
 
@@ -109,26 +109,69 @@ function App() {
       holdDice={() => holdDice(die.id)}
       difficulty={difficulty}
     />)
-  })
+  });
+
+  function newGame() {
+    setTenzies(false);
+    setDice(allNewDice());
+  };
+
+  function resetDifficulty() {
+    setDifficulty('');
+    newGame();
+  };
 
   return(
     <main>
       {/* {tenzies} */}
-      <h1 className="title">Care for a round of Tenzi?</h1>
-      <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-      <div className="dice-container">{diceElements}</div>
-      <Button
-        tenzies={tenzies}
-        rollDice={rollDice}
-      />
-      <Statistics 
-        currentTime={currentResult.time}
-        currentRolls={currentResult.rolls}
-        bestTime={bestResult.time}
-        bestRolls={bestResult.rolls}
-      />
+    {
+      difficulty ? 
+      <div>
+        <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+        <div className="dice-container">{diceElements}</div>
+        <Button
+          tenzies={tenzies}
+          rollDice={rollDice}
+        />
+        <Statistics 
+          currentTime={currentResult.time}
+          currentRolls={currentResult.rolls}
+          currentDifficulty={currentResult.difficulty}
+          bestTime={bestResult.time}
+          bestRolls={bestResult.rolls}
+          bestDifficulty={bestResult.difficulty}
+        />
+        <button className="button difficulty" onClick={resetDifficulty}>Change Difficulty</button>
+      </div>
+      :
+      <div>
+        <h1 className="title">Care for a round of Tenzi?</h1>
+        <p className="instructions">Please select your preferred difficulty.</p>
+        <Difficulty setDifficulty={setDifficulty}/>
+      </div>
+    }
     </main>
   )
+
+  //WORKING
+  // return(
+  //   <main>
+  //     {/* {tenzies} */}
+  //     <h1 className="title">Care for a round of Tenzi?</h1>
+  //     <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+  //     <div className="dice-container">{diceElements}</div>
+  //     <Button
+  //       tenzies={tenzies}
+  //       rollDice={rollDice}
+  //     />
+  //     <Statistics 
+  //       currentTime={currentResult.time}
+  //       currentRolls={currentResult.rolls}
+  //       bestTime={bestResult.time}
+  //       bestRolls={bestResult.rolls}
+  //     />
+  //   </main>
+  // )
 
 }
 
