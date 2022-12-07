@@ -76,14 +76,14 @@ function Die(props) {
             onClick={holdDice}
             >
                 <div class="column">
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
                 </div>
                 <div class="column">
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
-                    <span className={difficulty === "unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
+                    <span className={difficulty === "Unfair" ? "circle unfair" : difficulty === "Hard" ? "circle hard" : "circle six"}></span>
                 </div>
             </button>,
     }

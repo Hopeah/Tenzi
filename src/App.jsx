@@ -87,6 +87,9 @@ function App() {
       setDice(oldDice => oldDice.map(die => {
         return die.isHeld ? die : generateNewDie()
       }));
+      if (difficulty === "Impossible") {
+        resetHold()
+      }
     } else {
       newGame();
     };
@@ -95,7 +98,7 @@ function App() {
   function holdDice(id) {
     if (isActiveTimer === false) {
       setIsActiveTimer(true)
-    }
+    };
     setDice(oldDice => oldDice.map(die => {
       return die.id === id ? {...die, isHeld: !die.isHeld} : die
     }));
@@ -120,6 +123,18 @@ function App() {
     setDifficulty('');
     newGame();
   };
+
+  function resetHold() {
+    const unlucky = Math.random()
+    if (unlucky > 0.5) {
+      for (let i = 0; i < dice.length; i++) {
+        if (dice[i].isHeld) {
+          dice[i] = generateNewDie()
+          break;
+        }
+      }
+    }
+  }
 
   return(
     <main>
@@ -152,27 +167,6 @@ function App() {
     }
     </main>
   )
-
-  //WORKING
-  // return(
-  //   <main>
-  //     {/* {tenzies} */}
-  //     <h1 className="title">Care for a round of Tenzi?</h1>
-  //     <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-  //     <div className="dice-container">{diceElements}</div>
-  //     <Button
-  //       tenzies={tenzies}
-  //       rollDice={rollDice}
-  //     />
-  //     <Statistics 
-  //       currentTime={currentResult.time}
-  //       currentRolls={currentResult.rolls}
-  //       bestTime={bestResult.time}
-  //       bestRolls={bestResult.rolls}
-  //     />
-  //   </main>
-  // )
-
 }
 
 export default App
