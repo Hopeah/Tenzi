@@ -4,8 +4,10 @@ import Statistics from "./Statistics";
 import Button from "./Button";
 import Difficulty from "./Difficulty";
 import { nanoid } from "nanoid";
+import { Fireworks } from '@fireworks-js/react';
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'usehooks-ts';
 import { useState } from 'react';
-import reactLogo from './assets/react.svg'
 
 function App() {
   const [dice, setDice] = React.useState(allNewDice());
@@ -16,6 +18,7 @@ function App() {
   const [bestResult, setBestResult] = React.useState(() => JSON.parse(localStorage.getItem("bestResult")) || []);
   const [currentResult, setCurrentResult] = React.useState(() => JSON.parse(localStorage.getItem("currentResult")) || []);
   const [difficulty, setDifficulty] = React.useState("");
+  const { width, height } = useWindowSize()
 
   React.useEffect(() => {
     const allHeld = dice.every(die => die.isHeld);
@@ -134,11 +137,40 @@ function App() {
         }
       }
     }
-  }
+  };
+
+  function resetStats() {
+    setBestResult('[]');
+    setCurrentResult('[]');
+  };
 
   return(
     <main>
-      {/* {tenzies} */}
+      {tenzies
+       && difficulty !== "Impossible"
+       && <Confetti
+        width={width-10}
+        height={height-10}
+      />
+      }
+      {tenzies
+       && difficulty === "Impossible"
+       && <Fireworks 
+       options={{
+        rocketsPoint: {
+          min: 0,
+          max: 100
+        }
+      }}
+      style={{
+        top: 200,
+        left: 1000,
+        width: '100%',
+        height: '100%',
+        background: "#0B2434",
+      }}
+      />
+      }
     {
       difficulty ? 
       <div>
@@ -155,6 +187,7 @@ function App() {
           bestTime={bestResult.time}
           bestRolls={bestResult.rolls}
           bestDifficulty={bestResult.difficulty}
+          resetStats={resetStats}
         />
         <button className="button difficulty" onClick={resetDifficulty}>Change Difficulty</button>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Statistics(props) {
-    const { currentTime, currentRolls, currentDifficulty, bestTime, bestRolls, bestDifficulty } = props;
+    const { currentTime, currentRolls, currentDifficulty, bestTime, bestRolls, bestDifficulty, resetStats } = props;
 
      const currentMinutes = Math.floor((currentTime / 60000) % 60)
     const currentSeconds = Math.floor((currentTime / 1000) % 60)
@@ -27,6 +27,7 @@ function Statistics(props) {
                     <span>{bestRolls} {bestRolls == 1 ? "roll" : "rolls"},</span> 
                     <span>Difficulty: {bestDifficulty}</span>
                 </div>
+                <button className='button reset' onClick={resetStats}>Reset</button>
             </div> 
             :
             <div className='no-result'>Play to get your results!</div>

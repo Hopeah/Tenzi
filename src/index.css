@@ -139,8 +139,15 @@ main > div {
 .button.new {
   background-color: #86EF84;
 }
+.button.reset {
+  height: 25px;
+  width: 100px;
+  margin: 0.3rem;
+  background-color: #a6a5aa;
+  font-size: 0.9rem;
+}
 
-.button.difficulty:hover, .button.roll:hover, .button.new:hover {
+.button.difficulty:hover, .button.roll:hover, .button.new:hover, .button.reset:hover {
   background-color: #35b2ff; 
 }
 
@@ -215,6 +222,8 @@ main > div {
   background-color: rgb(255, 251, 242);
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 5px;
 }
 
 .result {
@@ -234,6 +243,7 @@ main > div {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .button-container {
