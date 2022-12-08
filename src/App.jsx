@@ -142,6 +142,7 @@ function App() {
   function resetStats() {
     setBestResult('[]');
     setCurrentResult('[]');
+    newGame()
   };
 
   return(
