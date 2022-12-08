@@ -128,15 +128,11 @@ function App() {
   };
 
   function resetHold() {
-    const unlucky = Math.random()
-    if (unlucky > 0.5) {
-      for (let i = 0; i < dice.length; i++) {
-        if (dice[i].isHeld) {
-          dice[i] = generateNewDie()
-          break;
-        }
-      }
-    }
+    const unlucky = Math.random();
+    const randomNum = Math.floor(Math.random()*10);
+    if (unlucky > 0.4) {
+      dice[randomNum] = generateNewDie()
+    };
   };
 
   function resetStats() {
