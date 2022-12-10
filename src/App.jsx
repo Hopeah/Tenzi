@@ -130,7 +130,7 @@ function App() {
   function resetHold() {
     const unlucky = Math.random();
     const randomNum = Math.floor(Math.random()*10);
-    if (unlucky > 0.4) {
+    if (unlucky > 0.25) {
       dice[randomNum] = generateNewDie()
     };
   };
